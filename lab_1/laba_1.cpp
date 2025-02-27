@@ -38,9 +38,9 @@ void worst_C();
 
 int main() {
     //worst_linear();
-    //worst_binary();
+    worst_binary();
     //average_linear();
-    average_binary();
+    //average_binary();
     //worst_vtupuyu();
     //worst_poumnomu();
     //worst_A();
@@ -376,28 +376,28 @@ unsigned time_C(int *arr, int N, int key, int *arr_0)
 
 void worst_A()
 {
-    std::ofstream outFile("lab_1/A.txt");
+    std::ofstream outFile("lab_1/A_ner.txt");
     for(int N = 100; N <= 1000000; N += 50000)
     {
         int arr[N];
         for (int i = 0; i < N; i++)
             arr[i] = random_key_index(N);
         int key = random_key(N);
-        //if (key > N*0.3 && key < N*0.7) key = N/2;
+        if (key > N*0.01 && key < N*0.99) key = N/2;
         outFile << time_A(arr, N, key) << std::endl;
     }
     outFile.close();
 }
 void worst_B()
 {
-    std::ofstream outFile("lab_1/B.txt");
+    std::ofstream outFile("lab_1/B_ner.txt");
     for(int N = 100; N <= 1000000; N += 50000)
     {
         int arr[N];
         for (int i = 0; i < N; i++)
             arr[i] = random_key_index(N);
         int key = random_key(N);
-        //if (key > N*0.3 && key < N*0.7) key = N/2;
+        if (key > N*0.01 && key < N*0.99) key = N/2;
         outFile << time_B(arr, N, key) << std::endl;
     }
     outFile.close();
@@ -412,7 +412,7 @@ void worst_C()
         for (int i = 0; i < N; i++)
             arr[i] = random_key_index(N);
         int key = random_key(N);
-        if (key > N*0.3 && key < N*0.7) key = N/2;
+        if (key > N*0.01 && key < N*0.99) key = N/2;
         outFile << time_C(arr, N, key, arr_0) << std::endl;
     }
     outFile.close();
