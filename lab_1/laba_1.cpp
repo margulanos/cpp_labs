@@ -387,7 +387,8 @@ void worst_A()
         for (int i = 0; i < N; i++)
             arr[i] = dstr(rng);
         int key = random_key(N);
-        if (key > N*0.01 && key < N*0.99) key = N/2;
+        if (key > N*0.01 && key < N*0.49) key = N/4;
+        else if (key > N*0.50 && key < N*0.99) key = 3*N/2;
         outFileN << N << std::endl;
         outFile << time_A(arr, N, key) << std::endl;
     }
@@ -406,7 +407,8 @@ void worst_B()
         for (int i = 0; i < N; i++)
             arr[i] = dstr(rng);
         int key = random_key(N);
-        if (key > N*0.01 && key < N*0.99) key = N/2;
+        if (key > N*0.01 && key < N*0.69) key = N/4;
+        else if (key > N*0.70 && key < N*0.99) key = 3*N/2;
         outFile << time_B(arr, N, key) << std::endl;
     }
     outFile.close();
@@ -424,7 +426,8 @@ void worst_C()
         for (int i = 0; i < N; i++)
             arr[i] = dstr(rng);
         int key = random_key(N);
-        if (key > N*0.01 && key < N*0.99) key = N/2;
+        if (key > N*0.01 && key < N*0.69) key = N/4;
+        else if (key > N*0.70 && key < N*0.99) key = 3*N/2;
         outFile << time_C(arr, N, key, arr_0) << std::endl;
     }
     outFile.close();
