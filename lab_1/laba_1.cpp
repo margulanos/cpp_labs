@@ -38,14 +38,14 @@ void worst_C();
 
 int main() {
     //worst_linear();
-    worst_binary();
+    //worst_binary();
     //average_linear();
     //average_binary();
     //worst_vtupuyu();
     //worst_poumnomu();
     //worst_A();
     //worst_B();
-    //worst_C();
+    worst_C();
 return 0 ;
 }
 
@@ -377,25 +377,34 @@ unsigned time_C(int *arr, int N, int key, int *arr_0)
 void worst_A()
 {
     std::ofstream outFile("lab_1/A_ner.txt");
-    for(int N = 100; N <= 1000000; N += 50000)
+    std::ofstream outFileN("lab_1/N_3.txt");
+    for(int N = 100; N <= 1000000; N += 20000)
     {
+        unsigned seed = 1001;
+        std::default_random_engine rng(seed);
+        std::uniform_int_distribution <unsigned> dstr(0, N-1);
         int arr[N];
         for (int i = 0; i < N; i++)
-            arr[i] = random_key_index(N);
+            arr[i] = dstr(rng);
         int key = random_key(N);
         if (key > N*0.01 && key < N*0.99) key = N/2;
+        outFileN << N << std::endl;
         outFile << time_A(arr, N, key) << std::endl;
     }
+    outFileN.close();
     outFile.close();
 }
 void worst_B()
 {
     std::ofstream outFile("lab_1/B_ner.txt");
-    for(int N = 100; N <= 1000000; N += 50000)
+    for(int N = 100; N <= 1000000; N += 20000)
     {
+        unsigned seed = 1001;
+        std::default_random_engine rng(seed);
+        std::uniform_int_distribution <unsigned> dstr(0, N-1);
         int arr[N];
         for (int i = 0; i < N; i++)
-            arr[i] = random_key_index(N);
+            arr[i] = dstr(rng);
         int key = random_key(N);
         if (key > N*0.01 && key < N*0.99) key = N/2;
         outFile << time_B(arr, N, key) << std::endl;
@@ -405,12 +414,15 @@ void worst_B()
 void worst_C()
 {
     std::ofstream outFile("lab_1/C_ner.txt");
-    for(int N = 100; N <= 1000000; N += 50000)
+    for(int N = 100; N <= 1000000; N += 20000)
     {
+        unsigned seed = 1001;
+        std::default_random_engine rng(seed);
+        std::uniform_int_distribution <unsigned> dstr(0, N-1);
         int arr[N];
         int arr_0[N] = {0};
         for (int i = 0; i < N; i++)
-            arr[i] = random_key_index(N);
+            arr[i] = dstr(rng);
         int key = random_key(N);
         if (key > N*0.01 && key < N*0.99) key = N/2;
         outFile << time_C(arr, N, key, arr_0) << std::endl;
