@@ -22,7 +22,7 @@ void backward_step(unsigned arr [], unsigned const begin_idx, unsigned const end
     for (unsigned i = end_idx; i > begin_idx; i--)
         if (arr[i - 1] > arr[i])
         {
-            std::swap(arr[i], arr[i + 1]);
+            std::swap(arr[i], arr[i - 1]);
             swaps++;
         }
 }
@@ -31,7 +31,6 @@ void shaker_sort(unsigned arr [], unsigned const begin_idx, unsigned const end_i
 {
     unsigned l = begin_idx;
     unsigned r = end_idx;
-    bool swapped = false;
     while (l < r)
     {
         forward_step(arr, l, r, swaps);
@@ -365,7 +364,7 @@ void test_shell()
 
 int main()
 {
-    //test_shaker();
+    test_shaker();
     //test_puzyrok();
     //test_comb();
     //test_shell();
